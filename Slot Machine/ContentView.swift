@@ -8,19 +8,62 @@
 import SwiftUI
 
 struct ContentView: View {
+   
+    @State private var amount = 1000
+   
+    private var symbols = ["","",""]
+    @State private var numbers = [0,0,0]
+   
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            Text("Welcome to Slots!")
+                .font(Font.custom("Charter", size: 47))
+                .font(.title)
+                .bold()
+            Text("Current Dollars: $\(amount)")
+                .bold()
+                .padding()
+                .font(Font.custom("Futura", size: 25))
+            Text("Out of money?")
+                .bold()
+                .padding()
+                .font(Font.custom("Futura", size: 20))
+            Button("Get Money") {
+                amount += 100
+            }
+            .font(Font.custom("Futura", size: 20))
+            Spacer()
+                .preferredColorScheme(.dark)
+            
         }
-        .padding()
     }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+    
+    struct CustomButtonStyle: ButtonStyle {
+        func makeBody(configuration: Configuration) -> some View {
+            configuration.label
+                .frame(width: 70)
+                .font(Font.custom("Futura", size: 24))
+                .padding()
+                .background(.red).opacity(configuration.isPressed ? 0.0 : 1.0)
+                .foregroundColor(.black)
+                .clipShape(RoundedRectangle(cornerRadius: 20))
+        }
+    }
+    
+    struct WinningSlotsView: View {
+        var body: some View {
+                VStack {
+                    Text("Winning Slots")
+                    VStack (alignment: .center) {
+                        Image("Slot 7").resizable().frame(width: 150, height: 150)
+                    }
+                }
+            }
+        }
+    
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ContentView()
+        }
     }
 }
