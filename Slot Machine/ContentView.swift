@@ -20,6 +20,32 @@ struct ContentView: View {
                 .font(Font.custom("Charter", size: 47))
                 .font(.title)
                 .bold()
+            HStack
+            {
+                Image("Slot 7")
+                    .resizable()
+                    .aspectRatio(1, contentMode: .fit)
+                    .background(Color.white.opacity(0.5))
+                    .cornerRadius(20)
+                    .padding()
+                Image("Slot 7")
+                    .resizable()
+                    .aspectRatio(1, contentMode: .fit)
+                    .background(Color.white.opacity(0.5))
+                    .cornerRadius(20)
+                    .padding()
+                Image("Slot 7")
+                    .resizable()
+                    .aspectRatio(1, contentMode: .fit)
+                    .background(Color.white.opacity(0.5))
+                    .cornerRadius(20)
+                    .padding()
+            }
+            Button("Spin")
+            {
+                amount -= 100
+            }
+            .buttonStyle(CustomButtonStyle())
             Text("Current Dollars: $\(amount)")
                 .bold()
                 .padding()
