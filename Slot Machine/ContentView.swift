@@ -11,56 +11,59 @@ struct ContentView: View {
    
     @State private var amount = 1000
    
-    private var symbols = ["","",""]
-    @State private var numbers = [0,0,0]
+    private var symbols = ["Slots 7","Diamond","Lemon"]
+    @State private var numbers = [1,2,0]
    
     var body: some View {
-        VStack {
-            Text("Welcome to Slots!")
-                .font(Font.custom("Charter", size: 47))
-                .font(.title)
-                .bold()
-            HStack
-            {
-                Image("Slot 7")
-                    .resizable()
-                    .aspectRatio(1, contentMode: .fit)
-                    .background(Color.white.opacity(0.5))
-                    .cornerRadius(20)
+        ZStack {
+            Rectangle()
+                .foregroundColor(Color(red: 200/225, green: 150/225, blue: 50/225))
+                .edgesIgnoringSafeArea(.all)
+            VStack {
+                Text("Welcome to Slots!")
+                    .font(Font.custom("Charter", size: 43))
+                HStack
+                {
+                   
+                    Image(symbols[numbers[0]])
+                        .resizable()
+                        .aspectRatio(1, contentMode: .fit)
+                        .background(Color.white.opacity(0.5))
+                        .cornerRadius(20)
+                    Image(symbols[numbers[1]])
+                        .resizable()
+                        .aspectRatio(1, contentMode: .fit)
+                        .background(Color.white.opacity(0.5))
+                        .cornerRadius(20)
+                    Image(symbols[numbers[2]])
+                        .resizable()
+                        .aspectRatio(1, contentMode: .fit)
+                        .background(Color.white.opacity(0.5))
+                        .cornerRadius(20)
+                    
+                    
+                }
+                Button("Spin")
+                {
+                    amount -= 100
+                }
+                .buttonStyle(CustomButtonStyle())
+                .padding(.all, 20)
+                Text("Current Dollars: $\(amount)")
+                    .font(Font.custom("Futura", size: 25))
+                    .padding(.all, 30)
+                Text("Out of money?")
                     .padding()
-                Image("Slot 7")
-                    .resizable()
-                    .aspectRatio(1, contentMode: .fit)
-                    .background(Color.white.opacity(0.5))
-                    .cornerRadius(20)
-                    .padding()
-                Image("Slot 7")
-                    .resizable()
-                    .aspectRatio(1, contentMode: .fit)
-                    .background(Color.white.opacity(0.5))
-                    .cornerRadius(20)
-                    .padding()
-            }
-            Button("Spin")
-            {
-                amount -= 100
-            }
-            .buttonStyle(CustomButtonStyle())
-            Text("Current Dollars: $\(amount)")
-                .bold()
-                .padding()
-                .font(Font.custom("Futura", size: 25))
-            Text("Out of money?")
-                .bold()
-                .padding()
+                    .font(Font.custom("Futura", size: 20))
+                Button("Get Money") {
+                    amount += 100
+                }
                 .font(Font.custom("Futura", size: 20))
-            Button("Get Money") {
-                amount += 100
+                Spacer()
+                NavigationLink("Winning Slots", destination: WinningView())
+                    .font(Font.custom("Futura", size: 35))
+                
             }
-            .font(Font.custom("Futura", size: 20))
-            Spacer()
-                .preferredColorScheme(.dark)
-            
         }
     }
     
@@ -70,13 +73,14 @@ struct ContentView: View {
                 .frame(width: 70)
                 .font(Font.custom("Futura", size: 24))
                 .padding()
-                .background(.red).opacity(configuration.isPressed ? 0.0 : 1.0)
+                .background(Color(red: 40/225, green: 150/225, blue: 225/225))
                 .foregroundColor(.black)
                 .clipShape(RoundedRectangle(cornerRadius: 20))
+                .bold()
         }
     }
     
-    struct WinningSlotsView: View {
+    struct WinningView: View {
         var body: some View {
                 VStack {
                     Text("Winning Slots")
