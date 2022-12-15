@@ -75,17 +75,13 @@ struct ContentView: View {
                     .buttonStyle(CustomButtonStyle()) //Extra UI
                     .padding(.all, 60)
                     .animation(Animation.easeOut(duration: 0.5))
-                    Text("Current Dollars: $\(amount)")
-                        .font(Font.custom("Futura", size: 25))
-                    Text("Out of money?")
-                        .padding()
-                        .font(Font.custom("Futura", size: 20))
-                    Button("Add $50") {
-                        amount += 50
-                    }
-                    .font(Font.custom("Futura", size: 20))
+                    Text("Current Dollars")
+                        .font(Font.custom("Futura", size: 40))
                     Spacer()
-                    NavigationLink("Winning Slots", destination:  WinningSlotsView())
+                    Text("$\(amount)")
+                        .font(Font.custom("Futura", size: 40))
+                    Spacer()
+                    NavigationLink("Winning Combinations", destination:  WinningSlotsView())
                         .font(Font.custom("Futura", size: 35))
                     
                 }
@@ -113,8 +109,8 @@ struct ContentView: View {
                     .foregroundColor(Color(red: 200/225, green: 150/225, blue: 50/225))
                     .edgesIgnoringSafeArea(.all)
                 VStack {
-                    Text("Winning Slots")
-                        .font(Font.custom("Futura", size: 34))
+                    Text("Winning Combinations")
+                        .font(Font.custom("Futura", size: 30))
                         .bold()
                     HStack
                     {
@@ -134,8 +130,10 @@ struct ContentView: View {
                             .background(Color.gray.opacity(0.5))
                             .cornerRadius(20)
                     }
-                    Text("Two of a kind is $25")
+                    Text("Two in a line is $25")
                         .font(Font.custom("Futura", size: 34))
+                    Text("(Either 2 of a Diamond, Lemon, or 7)")
+                        .font(Font.custom("Futura", size: 17))
                     HStack
                     {
                         Image("Diamond")
@@ -154,9 +152,10 @@ struct ContentView: View {
                             .background(Color.gray.opacity(0.5))
                             .cornerRadius(20)
                     }
-                    Text("Three of a kind is $500")
+                    Text("Three in a line is $500")
                         .font(Font.custom("Futura", size: 34))
-                    
+                    Text("(Either 3 of a Diamond, Lemon, or 7)")
+                        .font(Font.custom("Futura", size: 17))
                 }
             }
         }
